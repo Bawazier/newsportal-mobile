@@ -1,4 +1,5 @@
 import React from 'react';
+import {format} from 'date-fns';
 import {Thumbnail, Left, Body} from 'native-base';
 import {
   StyledCard,
@@ -9,38 +10,60 @@ import {
 } from './styled';
 import {TextTitleStyled, TextSecondaryStyled} from '../../styles';
 
-const CardNews = () => {
+const CardNews = (props) => {
   return (
     <StyledCard transparent>
       <StyledViewLeft>
         <StyledCardItem>
           <Left>
             <Thumbnail
-              source={{
-                uri:
-                  'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/1200px-React-icon.svg.png',
-              }}
+              source={
+                props.thumbnail
+                  ? {
+                      uri: props.thumbnail,
+                    }
+                  : {
+                      uri:
+                        'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/1200px-React-icon.svg.png',
+                    }
+              }
               style={{height: 20, width: 20}}
             />
             <Body>
-              <TextSecondaryStyled>NativeBase</TextSecondaryStyled>
+              <TextSecondaryStyled>
+                {props.userName || 'Story Name'}
+              </TextSecondaryStyled>
             </Body>
           </Left>
         </StyledCardItem>
         <StyledCardItem>
-          <TextTitleStyled>
-            React Native: "write one run anyware", true or false?
-          </TextTitleStyled>
+          <TextTitleStyled>{props.title || 'Story Title'}</TextTitleStyled>
         </StyledCardItem>
         <StyledCardItem>
           <Left>
-            <TextSecondaryStyled noted>Nov 8</TextSecondaryStyled>
-            <TextSecondaryStyled noted>2 min read</TextSecondaryStyled>
+            <TextSecondaryStyled noted>
+              {format(new Date(props.createdAt || Date.now()), 'MMM d')}
+            </TextSecondaryStyled>
+            <TextSecondaryStyled>&bull;</TextSecondaryStyled>
+            <TextSecondaryStyled noted>
+              {props.estimationRead || 0} min read
+            </TextSecondaryStyled>
           </Left>
         </StyledCardItem>
       </StyledViewLeft>
       <StyledViewsRight>
-        <StyledImage source={require('../../assets/code.png')} />
+        <StyledImage
+          source={
+            props.urlImage
+              ? {
+                  uri: props.urlImage,
+                }
+              : {
+                  uri:
+                    'https://jogjacourse.com/wp-content/uploads/2018/05/Kursus-React-Jogja.jpg',
+                }
+          }
+        />
       </StyledViewsRight>
     </StyledCard>
   );

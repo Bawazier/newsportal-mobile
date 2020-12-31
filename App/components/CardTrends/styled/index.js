@@ -2,6 +2,7 @@ import styled from 'styled-components/native';
 import {Card, CardItem} from 'native-base';
 
 export const StyledCard = styled(Card)`
+  background: transparent;
   width: 300px;
   height: auto;
   flex-direction: row;
@@ -9,6 +10,7 @@ export const StyledCard = styled(Card)`
 `;
 
 export const StyledCardItem = styled(CardItem)`
+  background: transparent;
   padding: 4px 0;
   margin: 0;
   width: 100%;

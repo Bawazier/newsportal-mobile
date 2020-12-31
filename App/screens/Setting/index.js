@@ -1,4 +1,7 @@
-import React from 'react';
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, {useState} from 'react';
+import {useDispatch, useSelector} from 'react-redux';
+import {useFocusEffect} from '@react-navigation/native';
 import {
   StyledViewTitle,
   StyledViewItem,
@@ -18,7 +21,13 @@ const Setting = () => {
       <Form>
         <StyledViewItem>
           <StyledTextLabel>Name</StyledTextLabel>
-          <StyledTextInput />
+          <StyledTextInput
+          // value={name}
+          // onChange={(e) => setName(e.target.value)}
+          // onSubmitEditing={submitEditing}
+          // editable={editName}
+          // autoFocus={editName}
+          />
           <StyledTextSecondary note>
             Your name appears on your, Profile page, as your byline, and in your
             responses. It is a required field.
@@ -29,7 +38,14 @@ const Setting = () => {
         </StyledViewItem>
         <StyledViewItem>
           <StyledTextLabel>Bio</StyledTextLabel>
-          <Textarea rowSpan={5} />
+          <Textarea
+            rowSpan={5}
+            // value={bio}
+            // onChange={(e) => setBio(e.target.value)}
+            // onSubmitEditing={submitEditing}
+            // editable={editBio}
+            // autoFocus={editBio}
+          />
           <StyledTextSecondary note>
             Your bio appears on your, Profile page. Max 160 characters
           </StyledTextSecondary>
@@ -56,14 +72,19 @@ const Setting = () => {
       <Form>
         <StyledViewItem>
           <StyledTextLabel>Your Email</StyledTextLabel>
-          <StyledTextInput />
+          <StyledTextInput
+          // value={email}
+          // onChange={(e) => setEmail(e.target.value)}
+          // onSubmitEditing={submitEditing}
+          // editable={editEmail}
+          // autoFocus={editEmail}
+          />
           <Button bordered light>
             <StyledTextSecondary>Edit Email</StyledTextSecondary>
           </Button>
         </StyledViewItem>
         <StyledViewItem>
           <StyledTextLabel>Password</StyledTextLabel>
-          <StyledTextInput />
           <Button bordered light>
             <StyledTextSecondary>Edit Password</StyledTextSecondary>
           </Button>

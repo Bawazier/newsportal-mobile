@@ -8,7 +8,7 @@ export const StyledContent = styled(Content)`
 
 export const TextStyled = styled(Text)`
   font-weight: bold;
-  font-size: 12px;
+  font-size: 18px;
   color: #292929;
 `;
 export const TextTitleStyled = styled(Text)`

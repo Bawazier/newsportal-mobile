@@ -3,6 +3,7 @@ import {Card, CardItem} from 'native-base';
 import {Image} from 'react-native';
 
 export const StyledCard = styled(Card)`
+  background: transparent;
   width: 320px;
   height: auto;
   flex-direction: row;
@@ -11,6 +12,7 @@ export const StyledCard = styled(Card)`
 `;
 
 export const StyledCardItem = styled(CardItem)`
+  background: transparent;
   padding: 4px 0;
   margin: 0;
   width: 100%;

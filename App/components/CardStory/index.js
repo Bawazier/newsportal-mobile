@@ -1,4 +1,5 @@
 import React from 'react';
+import {format} from 'date-fns';
 import {
   Card,
   CardItem,
@@ -12,35 +13,53 @@ import {
 import {Image} from 'react-native';
 import {TextTitleStyled} from '../../styles';
 
-const CardStory = () => {
+const CardStory = (props) => {
   return (
     <Card transparent style={{flex: 0}}>
       <CardItem>
         <Left>
-          <Thumbnail source={require('../../assets/timun.jpg')} />
+          <Thumbnail
+            source={
+              props.thumbnail
+                ? {
+                    uri: props.thumbnail,
+                  }
+                : {
+                    uri:
+                      'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/1200px-React-icon.svg.png',
+                  }
+            }
+          />
           <Body>
-            <Text>NativeBase</Text>
-            <Text note>April 15, 2016</Text>
+            <Text>{props.userName || 'Story Name'}</Text>
+            <Text note>
+              {format(new Date(props.createdAt || Date.now()), 'MMMM dd')}
+            </Text>
           </Body>
         </Left>
       </CardItem>
       <CardItem>
         <Body>
           <Image
-            source={require('../../assets/code.png')}
+            source={
+              props.urlImage
+                ? {
+                    uri: props.urlImage,
+                  }
+                : {
+                    uri:
+                      'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/1200px-React-icon.svg.png',
+                  }
+            }
             style={{height: 200, width: '100%', flex: 1}}
           />
-          <TextTitleStyled>
-            React Native: "write one run anyware", true or false?
-          </TextTitleStyled>
+          <TextTitleStyled>{props.title || 'Title Story'}</TextTitleStyled>
         </Body>
       </CardItem>
       <CardItem>
         <Left>
-          <Button transparent textStyle={{color: '#87838B'}}>
-            <Icon name="logo-github" />
-            <Text note>1,926 stars</Text>
-          </Button>
+          <Icon name="logo-github" />
+          <Text note>{props.stars || 5} stars</Text>
         </Left>
       </CardItem>
     </Card>
